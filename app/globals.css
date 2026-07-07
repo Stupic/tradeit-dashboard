@@ -1,0 +1,62 @@
+:root {
+  /* surfaces */
+  --bg: #060913;
+  --bg-2: #0a0f1e;
+  --panel: rgba(255, 255, 255, 0.025);
+  --panel-strong: rgba(255, 255, 255, 0.04);
+  --border: rgba(120, 150, 255, 0.14);
+  --border-strong: rgba(120, 150, 255, 0.28);
+
+  /* ink */
+  --ink: #e8edf7;
+  --ink-2: #9aa7c2;
+  --ink-3: #5c6a86;
+
+  /* accents (검증 완료: dataviz validator) */
+  --blue: #4a9eff;
+  --green: #22c55e;
+  --green-2: #34d399;
+  --orange: #f59e0b;
+  --cyan: #22d3ee;
+  --purple: #8b7cf6;
+  --slate: #94a3b8;
+
+  --up: #34d399;
+  --down: #f87171;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background:
+    radial-gradient(1200px 800px at 50% 42%, rgba(40, 70, 160, 0.18), transparent 60%),
+    radial-gradient(900px 600px at 12% 6%, rgba(30, 90, 200, 0.10), transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* recharts: 축/그리드 은은하게 */
+.recharts-cartesian-axis-tick text {
+  fill: var(--ink-3);
+  font-size: 11px;
+}
+.recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+.recharts-surface {
+  overflow: visible;
+}

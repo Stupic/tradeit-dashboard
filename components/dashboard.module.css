@@ -1,0 +1,510 @@
+/* ───────────────────────── shell ───────────────────────── */
+.app {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 72px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  background: rgba(6, 10, 22, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 22px 0;
+  gap: 8px;
+}
+.logoDot {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: conic-gradient(from 200deg, var(--blue), var(--cyan), var(--purple), var(--blue));
+  box-shadow: 0 0 18px rgba(74, 158, 255, 0.6);
+  margin-bottom: 18px;
+}
+.navIcon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--ink-3);
+  position: relative;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.navIcon:hover {
+  color: var(--ink-2);
+  background: var(--panel);
+}
+.navIconActive {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.25), rgba(74, 158, 255, 0.08));
+  box-shadow: 0 0 0 1px var(--border-strong) inset;
+}
+.navSpacer {
+  flex: 1;
+}
+.navBadge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #1b2540, #0d1526);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 14px 28px 16px;
+}
+
+/* ───────────────────────── topbar / head ───────────────────────── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 15px;
+}
+.datePicker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 13px;
+}
+.datePicker svg {
+  color: var(--blue);
+}
+
+.pageHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+.pageHead h1 {
+  font-size: 27px;
+  font-weight: 800;
+}
+.pageHead p {
+  color: var(--ink-2);
+  font-size: 13px;
+  margin-top: 6px;
+}
+.realtime {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  background: rgba(52, 211, 153, 0.08);
+  color: var(--green-2);
+  font-size: 12px;
+  font-weight: 600;
+}
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green-2);
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* ───────────────────────── main grid ───────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 20px;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 0;
+}
+
+/* ───────────────────────── card ───────────────────────── */
+.card {
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+  border-radius: 16px;
+  padding: 18px;
+  backdrop-filter: blur(6px);
+}
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.cardTitle {
+  font-size: 14px;
+  font-weight: 700;
+}
+.cardSub {
+  font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* ───────────────────────── info panel ───────────────────────── */
+.infoPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+.infoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.infoLabel {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink-2);
+}
+.infoDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.infoValue {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink);
+}
+.infoUnit {
+  color: var(--ink-3);
+  font-weight: 500;
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+/* ───────────────────────── change badge ───────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.badgeUp {
+  color: var(--up);
+  background: rgba(52, 211, 153, 0.12);
+}
+.badgeDown {
+  color: var(--down);
+  background: rgba(248, 113, 113, 0.12);
+}
+
+/* ───────────────────────── center stage ───────────────────────── */
+.center {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+}
+.stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* concentric rings + hub */
+.hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: radial-gradient(circle, rgba(30, 80, 200, 0.22), rgba(10, 20, 50, 0.05) 70%);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 0 60px rgba(40, 90, 200, 0.25) inset, 0 0 40px rgba(40, 90, 200, 0.15);
+  z-index: 3;
+}
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(120, 150, 255, 0.10);
+  z-index: 1;
+}
+.ringSpin {
+  border-style: dashed;
+  border-color: rgba(120, 150, 255, 0.14);
+  animation: spin 60s linear infinite;
+}
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.hubIcon {
+  color: var(--cyan);
+  filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.7));
+}
+.hubTitle {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+.hubLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--green-2);
+  font-size: 11px;
+  margin-top: 8px;
+}
+.hubClock {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  margin-top: 4px;
+  letter-spacing: 0.1em;
+}
+
+/* metric node (circular) */
+.node {
+  position: absolute;
+  width: 158px;
+  height: 158px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: radial-gradient(circle, rgba(12, 20, 40, 0.9), rgba(8, 12, 26, 0.6));
+  border: 1px solid var(--border);
+  z-index: 4;
+}
+.nodeInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.nodeIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 2px;
+}
+.nodeLabel {
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.nodeValue {
+  font-size: 24px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* 세 노드를 허브 주위 궤도 위에 삼각형으로 배치 (center = 50%/50%) */
+.nodeTop {
+  left: 50%;
+  top: 15%;
+  transform: translate(-50%, -50%);
+}
+.nodeLeft {
+  left: 22%;
+  top: 68%;
+  transform: translate(-50%, -50%);
+}
+.nodeRight {
+  left: 78%;
+  top: 68%;
+  transform: translate(-50%, -50%);
+}
+
+/* floating info panel next to 회원가입수 node */
+.floatInfo {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  width: 200px;
+  z-index: 5;
+}
+
+/* 별자리(네트워크) 오버레이 */
+.constellation {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.constLine {
+  stroke: rgba(120, 150, 255, 0.14);
+  stroke-width: 1;
+}
+.constSpoke {
+  stroke: rgba(120, 150, 255, 0.22);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.constDot {
+  fill: rgba(150, 180, 255, 0.55);
+}
+.constDotBright {
+  fill: rgba(120, 200, 255, 0.9);
+}
+
+/* today summary */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.sumItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sumTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sumIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.sumLabel {
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.sumValue {
+  font-size: 20px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* donut */
+.donutWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.donutCenter {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  pointer-events: none;
+}
+.donutTotal {
+  font-size: 17px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.donutCaption {
+  font-size: 10px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.legendName {
+  color: var(--ink-2);
+  flex: 1;
+}
+.legendPct {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.loading {
+  display: grid;
+  place-items: center;
+  height: 60vh;
+  color: var(--ink-3);
+  gap: 14px;
+}
+
+/* dashed connectors from side info panels to center nodes */
+.connectDot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-3);
+}
+
