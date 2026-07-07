@@ -3,7 +3,6 @@
 import styles from "./dashboard.module.css";
 import { useDashboard } from "@/lib/useDashboard";
 import FitScreen from "./FitScreen";
-import Sidebar from "./Sidebar";
 
 // 설계 기준 크기 (16:9). 이 크기로 렌더 후 화면에 맞춰 스케일 → 스크롤 없음.
 const DESIGN_W = 1600;
@@ -31,7 +30,6 @@ export default function Dashboard() {
     return (
       <FitScreen width={DESIGN_W} height={DESIGN_H}>
         <div className={styles.app}>
-          <Sidebar />
           <div className={styles.content}>
             <div className={styles.loading}>데이터를 불러오지 못했습니다.</div>
           </div>
@@ -44,7 +42,6 @@ export default function Dashboard() {
     return (
       <FitScreen width={DESIGN_W} height={DESIGN_H}>
         <div className={styles.app}>
-          <Sidebar />
           <div className={styles.content}>
             <div className={styles.loading}>
               <div className={styles.pulseDot} /> 대시보드를 불러오는 중…
@@ -60,7 +57,6 @@ export default function Dashboard() {
   return (
     <FitScreen width={DESIGN_W} height={DESIGN_H}>
     <div className={styles.app}>
-      <Sidebar />
       <div className={styles.content}>
         {/* topbar */}
         <div className={styles.topbar}>
