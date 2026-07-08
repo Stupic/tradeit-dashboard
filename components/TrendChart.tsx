@@ -57,7 +57,7 @@ export default function TrendChart({
               color: "#e8edf7",
             }}
             labelFormatter={(l) => shortDate(String(l))}
-            formatter={(v: number) => [valueFormat(v), ""]}
+            formatter={(v: any) => [valueFormat(Number(v)), ""]}
           />
           <Line
             type="monotone"

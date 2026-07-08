@@ -48,7 +48,7 @@ export default function RevenueDonut({
                 fontSize: 12,
                 color: "#e8edf7",
               }}
-              formatter={(v: number, _n, p: any) => [
+              formatter={(v: any, _n: any, p: any) => [
                 `${v}% · ${formatCurrency(p.payload.amount, currency)}`,
                 p.payload.label,
               ]}
