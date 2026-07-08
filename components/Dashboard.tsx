@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import styles from "./dashboard.module.css";
 import { useDashboard } from "@/lib/useDashboard";
+import { useDataChanges } from "@/lib/useDataChanges";
 import FitScreen from "./FitScreen";
 
 // 설계 기준 크기 (16:9). 이 크기로 렌더 후 화면에 맞춰 스케일 → 스크롤 없음.
@@ -25,6 +27,21 @@ function dateLabel(ymd: string): string {
 
 export default function Dashboard() {
   const { data, error } = useDashboard();
+
+  // ── 데이터 변동 감지 (가입자 · 결제건수 · 매출) ──────────────────
+  // 폴링마다 누적값이 늘면 changes 이벤트가 발생한다.
+  const changes = useDataChanges(data);
+  useEffect(() => {
+    if (!changes) return;
+    // TODO(알림/효과): 여기서 토스트/사운드/노드 하이라이트 등을 트리거.
+    //   changes.members?.delta  → 신규 가입 n명
+    //   changes.payments?.delta → 신규 결제 n건
+    //   changes.revenue?.delta  → 매출 증가분
+    if (process.env.NODE_ENV === "development") {
+      // 개발 중 동작 확인용 (실효과 연결 시 제거)
+      console.debug("[data-change]", changes);
+    }
+  }, [changes]);
 
   if (error) {
     return (
